@@ -1,0 +1,55 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Application List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Etat</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let application of applications">
+            <td>{{application.titre}}</td>
+            <td>{{application.desc}}</td>
+            <td>{{application.status}}</td>
+            <td><button (click)="deleteApplication(application.id)" class="btn btn-danger">Archiver</button>
+<!--                 <button (click)="updateApplication(application.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+ -->                <!-- <button (click)="getApplication(application.id)" class="btn btn-info" style="margin-left: 10px">Afficher</button> -->
+                    <!-- <button (click)="detailApplication(application.id)" class="btn btn-info" style="margin-left: 10px">Afficher</button> -->
+                    <button [routerLink]="['/details-application', application.id]" class="btn btn-info" style="margin-left: 10px">Afficher</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-body">
+    <!-- Basic example and Profile cards section start -->
+    <section id="basic-examples">
+        <div class="row match-height">
+            <div  *ngFor="let application of applications"  class="col-xl-4 col-md-6 col-sm-12">
+                <div class="card" style="height: 509.3px;">
+                    <div class="card-content">
+                        <img class="card-img-top img-fluid" src="assets/images/pages/content-img-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5>TITRE : {{application.titre}}</h5>
+                            <p class="card-text  mb-0">DESCRIPTION : {{application.desc}}</p>
+                            <!-- <span class="card-text">STATUS : {{application.status}}</span> -->
+                            <div class="card-btns d-flex justify-content-between mt-2">
+                                <a [routerLink]="['/details-application', application.id]" class="btn gradient-light-primary text-white waves-effect waves-light">Afficher</a>
+                                <a (click)="deleteApplication(application.id)" class="btn btn-outline-primary waves-effect waves-light">archiver</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
